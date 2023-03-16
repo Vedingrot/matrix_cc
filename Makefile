@@ -5,6 +5,7 @@ CFLAGS      = $(CDEGUB) -Wall -Werror -Wextra -Weffc++
 HEADER      = s21_matrix_oop.h
 SOURCES     = s21_matrix_oop.cc
 OBJECTS     = $(SOURCES:.cc=.o)
+VPATH       = src/
 LIB_MATRIX  = libs21_matrix_oop.a
 TEST_SOURCE 				= test.cc
 TEST_FLAGS  			  = -lgtest
@@ -65,7 +66,7 @@ $(LCOV_REPORT_DIR) : $(COVERAGE_INFO)
 lcov_report: $(LCOV_REPORT_DIR)
 
 $(OBJECTS): $(SOURCES)
-	$(CC) -c $(SOURCES)
+	$(CC) -c $^
 
 $(LIB_MATRIX): $(HEADER) $(SOURCES)
 
